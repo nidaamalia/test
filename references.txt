@@ -1,0 +1,21 @@
+React installation:
+https://www.w3schools.com/react/react_getstarted.asp
+
+add typescript to react:
+https://create-react-app.dev/docs/adding-typescript/
+
+github configuration:
+https://www.datacamp.com/community/tutorials/git-push-pull
+
+colorbox with react:
+https://www.geeksforgeeks.org/how-to-create-a-color-box-app-using-reactjs/
+
+react forms:
+https://www.w3schools.com/react/react_forms.asp
+
+hsl concept:
+https://www.w3schools.com/colors/colors_hsl.asp
+
+convert rgb to hsl:
+https://stackoverflow.com/questions/11923659/javascript-sort-rgb-values
+
