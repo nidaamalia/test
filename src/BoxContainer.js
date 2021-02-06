@@ -31,7 +31,7 @@ class BoxContainer extends Component{
         var res = this.state.colors[i].split(",");
         res = res[2]
         var val = parseFloat(res.slice(0, -2))
-        if (val => 50.00 ){
+        if (val > 50.00 ){
           this.state.tmp[i] = this.state.colors[i]
           console.log("tmp", this.state.tmp[i])
           this.state.colors[i] = `hsl(0,0%,100%)`;
@@ -45,7 +45,7 @@ class BoxContainer extends Component{
         var res = this.state.colors[i].split(",");
         res = res[2]
         var val = parseFloat(res.slice(0, -2))
-        if (val => 50.00 ){
+        if (val > 50.00 ){
           this.state.colors[i] = this.state.tmp[i];
           console.log("tmp", this.state.tmp[i])
         }        
