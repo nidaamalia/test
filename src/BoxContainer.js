@@ -17,11 +17,14 @@ class BoxContainer extends Component{
         colors : generateColors(this.props.num),        
         username: '',
         checkDarkness: '',
+        checkColor: '',
         tmp : []
     }   
     //console.log(this.state.colors)
   }   
 
+  // checking the darkness of the color based on the light element value
+  // if it's more 50%, it is considered as light
   myCheckHandler = (event) => {    
     
     if(event.target.checked){
@@ -55,6 +58,38 @@ class BoxContainer extends Component{
     }
   }
 
+  // define the color by hue value
+  mySelectHandler = (event) => {        
+    if(event.target.value == "1"){
+      this.setState({checkColor: "Red Tone"})  
+      for (var i in this.state.colors){
+        var res = this.state.colors[i].split(",");
+        res = res[0]
+        var val = parseFloat(res.substring(4))
+        // console.log(val)
+        if (val > 30.00 ){
+          this.state.tmp[i] = this.state.colors[i]
+          console.log("tmp", this.state.tmp[i])
+          this.state.colors[i] = `hsl(0,0%,100%)`;
+          //console.log(res, val)
+        }
+        
+      }      
+    }
+    else{
+      this.setState({checkColor: "Default"})
+      for (var i in this.state.colors){
+        var res = this.state.colors[i].split(",");
+        res = res[0]
+        var val = parseFloat(res.substring(4))
+        if (val > 30.00 ){
+          this.state.colors[i] = this.state.tmp[i];
+          //console.log("tmp", this.state.tmp[i])
+        }        
+      }       
+    }    
+  }  
+
   render(){  
     return( 
       <div>        
@@ -62,6 +97,14 @@ class BoxContainer extends Component{
           <h1>Only Show the Darker Color: {this.state.checkDarkness}</h1>
           <input type="checkbox" name="darker" value="Active" onChange={this.myCheckHandler}/>
           <label > Darker Color</label><br></br>
+
+          <form>
+            <h1>Color Filter: {this.state.checkColor}</h1>
+            <select onChange={this.mySelectHandler}>
+              <option value="0">Default</option>
+              <option value="1">Red</option>
+            </select>
+          </form>          
        
         <div className='BoxContainer'> 
           {this.state.colors.map(color => ( 
